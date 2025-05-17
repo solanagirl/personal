@@ -1,26 +1,315 @@
+/* globals.css
+   Extensive global stylesheet for consistent theming and utility across the site.
+   Import this file in your _app.js (or _app.tsx) with:
+     import '../styles/globals.css';
+   ------------------------------------------------------------------------- */
 @import "tailwindcss";
 
+/* 1. CSS Variables (Design Tokens) ------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color Palette */
+  --color-primary: #457B9D;           /* bright winter red */
+  --color-secondary: #A8DADC;         /* minty green accent */
+  --color-accent: #e54424;            /* icy blue accent */
+  --color-highlight: #F1FAEE;         /* snow white highlight */
+  --color-gilded: #F6E27F;            /* soft white gold accent */
+  --color-soft-pink: #272526;         /* soft pastel pink */
+  --color-shadow-primary: #4A4A4A;    /* neutral gray */
+
+  --color-background: #FDFDFD;        /* soft light neutral base */
+  --color-surface: #FFFFFF;           /* clean surface */
+  --color-text-primary: #1D3557;      /* deep navy text */
+  --color-text-secondary: #4A4A4A;    /* neutral gray */
+  --color-success: #06D6A0;
+  --color-error: #EF476F;
+  --color-warning: #FFD166;
+  --color-info: #118AB2;
+
+  /* Named Colors for Direct Use */
+
+  /* Typography */
+  --font-family-sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-family-serif: 'Merriweather', 'Georgia', serif;
+  --font-family-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-heading: 1.45rem;
+  --font-size-title: 1.675rem;
+
+  --line-height-sm: 1.25;
+  --line-height-base: 1.5;
+  --line-height-lg: 1.75;
+
+  /* Spacing Scale */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  --space-xxxl: 4rem;
+
+  /* Screen widths (aligned to breakpoints and common layout scales) */
+  --width-mobile: 100%;        /* mobile full */
+  --width-tablet: 720px;       /* ~tablet */
+  --width-desktop: 960px;       /* desktop */
+  --width-wide: 1140px;      /* wide desktop */
+  --width-full: 100%;
+  --width-half: 50%;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1536px;
+  /* Radii */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 1px 0px 0px var(--color-shadow-primary);
+
+  /* Surface Sheen (Magnetic effect) */
+  --surface-sheen: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.05) 100%);
+
+  /* Transitions */
+  --transition-duration: 0.3s;
+  --transition-ease: ease-in-out;
+
+  /* Z-index Layers */
+  --z-dropdown: 1000;
+  --z-modal: 1100;
+  --z-tooltip: 1200;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 2. CSS Reset --------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+}
+
+section {
+  max-width: 92%;
+  display: block;
+  padding: 24px;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+/* 3. Base Element Styles ----------------------------------------------------- */
+
+a {
+  color: var(--color-primary);
+  transition: color var(--transition-duration) var(--transition-ease);
+}
+a:hover {
+  color: var(--color-secondary);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+}
+
+/* 4. Utility Classes --------------------------------------------------------- */
+
+/* Margin */
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xxxl { margin-top: var(--space-xxxl); }
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mr-sm { margin-right: var(--space-sm); }
+
+.ml-sm { margin-left: var(--space-sm); }
+
+.mr-md { margin-right: var(--space-md); }
+
+
+/* Padding */
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.px-md { padding-left: var(--space-md); padding-right: var(--space-md); }
+.pt-md { padding-top: var(--space-md);}
+.pb-md { padding-bottom: var(--space-md);}
+
+/* Text Align */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+/* Display Helpers */
+.d-block { display: block; }
+.d-inline { display: inline; }
+.d-i-nlineblock { display: inline-block; }
+.d-flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; flex-direction: row; justify-content: space-between; }
+.flex-vertical { display: flex; flex-direction: column; justify-content: flex-start; align-items: baseline;}
+
+/* 5. Layout --------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--breakpoint-xl);
+  margin: 0 auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  margin-top: var(--space-xxxl);
+  margin-bottom: var(--space-xxxl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--space-sm));
+  margin-right: calc(-1 * var(--space-sm));
+}
+.col {
+  flex: 1;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+}
+
+/* 6. Responsive Helpers ------------------------------------------------------ */
+
+@media (min-width: var(--breakpoint-sm)) {
+  .sm\:d-flex { display: flex; }
+  .sm\:col-6 { flex: 0 0 50%; max-width: 50%; }
+}
+
+@media (min-width: var(--breakpoint-md)) {
+  .md\:d-flex { display: flex; }
+  .md\:col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+}
+
+@media (min-width: var(--breakpoint-lg)) {
+  .lg\:col-3 { flex: 0 0 25%; max-width: 25%; }
+}
+
+/* 7. Component Tokens (Placeholders) ----------------------------------------- */
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) var(--transition-ease);
+}
+.btn:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Cards */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-md);
+}
+
+/* Modals, Tooltips, etc. can be built using z-index variables, shadows, etc. */
+
+/* 4. Text Gradient Animation ------------------------------------------------ */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.text-gradient-animated {
+  background: linear-gradient(270deg, var(--color-accent), var(--color-gilded), var(--color-soft-pink));
+  background-size: 600% 600%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientShift 6s ease infinite;
+  text-shadow: var(--shadow-text-primary);
 }
+
+.markdown-preview {
+  position: relative;
+  max-width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+
+.markdown-content {
+  padding: 0px;
+}
+
+.markdown-fade {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+  background: linear-gradient(to bottom, transparent, var(--color-background));
+  pointer-events: none;
+}
+
+
+/* END OF globals.css */

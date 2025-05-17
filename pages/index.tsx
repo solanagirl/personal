@@ -1,115 +1,133 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+'use client';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import HeliusBlogs from '@/components/HeliusBlogs';
+import MarkdownViewer from '@/components/MarkdownViewer';
+import Sections, { TopNav, SubNav } from '@/components/Navigation';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const photos = ['/photos/1.jpg', '/photos/2.jpeg'];
+const nfts = ['/nfts/1.png', '/nfts/2.png'];
 
-export default function Home() {
+
+export default function HomePage() {
+  const [mode, setMode] = useState<'photos' | 'nfts' | 'random'>('photos');
+  const [index, setIndex] = useState(0);
+  const [activeMain, setActiveMain] = useState<string>('Gray Body Radiation');
+  const mainItems = Sections.map((s) => s.title);
+
+  const getMedia = () => {
+    const pool = mode === 'photos' ? photos : mode === 'nfts' ? nfts : [...photos, ...nfts];
+    return pool[index % pool.length];
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => prev + 1);
+    }, 7000); // change every 3 seconds
+    return () => clearInterval(interval);
+  }, [mode]);
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Head>
+        <title>Amy | solanagirl.dev</title>
+        <meta name="description" content="The magnetic winter aesthetic of Amy's web3 world." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className="container z-auto">
+        {/* Hero Section */}
+      <section className="section z-40">
+      <TopNav active={activeMain} setActive={setActiveMain} items={mainItems} />
+        <div className="w-full flex-between gap-32 z-40">
+        <div className='flex-vertical h-full w-1/4 z-40 gap-2 mt-xl'>
+        <div
+              className="relative overflow-hidden"
+              style={{ width: '300px', height: '300px' }}
+            >
+              <Image
+                src={getMedia()}
+                alt="Amy Media"
+                fill
+                style={{ objectFit: 'cover' }}
+                key={mode + index}
+              />
+            </div>
+          <p className="text-xs text-gray-700">
+            unassuming operational efficiency maxi 
+          </p>
+          <Image src={'/assets/art_chain.png'} width={300} height={600} alt="art"/>
+          <SubNav active={activeMain} items={Sections} />
+          <div className='flex gap-4 mt-md'>
+          <div className=" btn text-sm text-gray-800 px-sm py-xs rounded-xl shadow-sm relative">
+                  💬 GitHub
+          </div>
+          <div className=" btn text-sm text-gray-800 px-sm py-xs rounded-xl shadow-sm relative">
+                  💬 Inbox Me!
+          </div>
+          </div>
+            {/* <div className='h-1/2 mt-xxxl'>
+            <p className='text-right'>uwu whats this?</p>
+            <div className='rounded-full bg-black w-48 h-48 skew-y-36 '>
+
+            </div>
+            <p>Click to {"a"}Void</p>
+            </div> */}
+          
+          </div>
+          <div className="mb-md mt-xl z-40">
+          <Image src={'/assets/blob.gif'} width={300} height={600} alt="art"/>
+            <hr className='h-4 mb-md' />
+              <div className='flex flex-row flex-wrap z-50'>
+              <MarkdownViewer title='TransientState' />
+              <Image src={"/assets/DeWiChart.png"}              
+                  width={1024}
+                  height={768}
+                  alt="DeWi Market Chart"
+                  style={{ objectFit: 'scale-down' }}
+                  />
+                <MarkdownViewer title='DeWiMarket' />
+                <Link href={`articles/DeWiMarket`} className="text-lg text-primary"><h2>Decentralized Wireless Network Markets on Solana</h2></Link>
+                <hr className='h-2 mt-xl w-full'/>
+                <HeliusBlogs />
+                <hr className='h-2 mt-xl w-full'/>
+                <Image src={"/assets/AICompanion.webp"}              
+                  width={1024}
+                  height={768}
+                  alt="AI Companion Blade Runner"
+                  style={{ objectFit: 'scale-down', marginTop: '2em' }}
+                  />
+                <MarkdownViewer title='LoveOnDemand' />
+              
+                <Link href={`articles/LoveOnDemand`} className="text-lg text-primary"><h2>Digital Love on Demand, Fulfillment from AI Companions </h2></Link>
+                </div>
+            </div>
+        </div>
+      </section>
+      <div className='absolute w-screen h-screen right-0 bottom-0 z-50'>
+        <iframe
+                src="https://open.spotify.com/embed/track/4nCksrW8Dga2tMKQGIJsCd?utm_source=generator"
+                width="100%"
+                height="81px"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                style={{ borderRadius: '12px', position: "fixed", bottom: 0, right: 0, width: "28vw" }}
+              ></iframe>
+
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="text-center py-md text-sm text-gray-500">
+        <p>© {new Date().getFullYear()} Amy @ solanagirl.dev. All rights reserved.</p>
+        <p>
+          Built with ☕, 🧠, and a sprinkle of ✨.
+        </p>
       </footer>
-    </div>
+    </>
   );
 }
