@@ -57,12 +57,12 @@ export default function HomePage() {
                 key={mode + index}
               />
             </div>
+            <h1 className='text-2xl'>Amy | 0xSolanaGirl</h1>
           <p className="text-xs text-gray-700">
             unassuming operational efficiency maxi 
           </p>
-          <Image src={'/assets/art_chain.png'} width={300} height={600} alt="art"/>
-          <SubNav active={activeMain} items={Sections} />
-          <div className='flex gap-4 mt-md'>
+          {/* <SubNav active={activeMain} items={Sections} /> */}
+          <div className='flex gap-4'>
           <div className=" btn text-sm text-gray-800 px-sm py-xs rounded-xl shadow-sm relative">
                   💬 GitHub
           </div>
@@ -77,10 +77,10 @@ export default function HomePage() {
             </div>
             <p>Click to {"a"}Void</p>
             </div> */}
-          
+                    <Image src={'/assets/art_chain.png'} width={300} height={600} alt="art"/>
           </div>
           <div className="mb-md mt-xl z-40">
-          <Image src={'/assets/blob.gif'} width={300} height={600} alt="art"/>
+          {/* <Image src={'/assets/blob.gif'} width={300} height={600} alt="art"/> */}
             <hr className='h-4 mb-md' />
               <div className='flex flex-row flex-wrap z-50'>
               <MarkdownViewer title='TransientState' />
