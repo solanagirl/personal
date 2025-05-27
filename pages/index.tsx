@@ -1,8 +1,8 @@
 'use client';
 
 import HeliusBlogs from '@/components/HeliusBlogs';
+import IframeLibrary from '@/components/Iframes';
 import MarkdownViewer from '@/components/MarkdownViewer';
-import Sections, { TopNav, SubNav } from '@/components/Navigation';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,8 +15,6 @@ const nfts = ['/nfts/1.png', '/nfts/2.png'];
 export default function HomePage() {
   const [mode, setMode] = useState<'photos' | 'nfts' | 'random'>('photos');
   const [index, setIndex] = useState(0);
-  const [activeMain, setActiveMain] = useState<string>('Gray Body Radiation');
-  const mainItems = Sections.map((s) => s.title);
 
   const getMedia = () => {
     const pool = mode === 'photos' ? photos : mode === 'nfts' ? nfts : [...photos, ...nfts];
@@ -42,26 +40,19 @@ export default function HomePage() {
       <main className="container z-auto">
         {/* Hero Section */}
       <section className="section z-40">
-      <TopNav active={activeMain} setActive={setActiveMain} items={mainItems} />
         <div className="w-full flex-between gap-32 z-40">
-        <div className='flex-vertical h-full w-1/4 z-40 gap-2 mt-xl'>
+        <div className='flex-vertical h-full w-1/4 z-40 gap-2 mt-xl justify-center border-l-2'>
+        <MarkdownViewer title='TransientState' />
+        {/* <Image src={'/assets/blob.gif'} width={300} height={600} alt="art"/>  
+        <Image src={'/assets/art_chain.png'} className={"static"} width={300} height={600} alt="art"/>  */}
         <div
               className="relative overflow-hidden"
               style={{ width: '300px', height: '300px' }}
             >
-              <Image
-                src={getMedia()}
-                alt="Amy Media"
-                fill
-                style={{ objectFit: 'cover' }}
-                key={mode + index}
-              />
             </div>
           <p className="text-xs text-gray-700">
             unassuming operational efficiency maxi 
           </p>
-          <Image src={'/assets/art_chain.png'} width={300} height={600} alt="art"/>
-          <SubNav active={activeMain} items={Sections} />
           <div className='flex gap-4 mt-md'>
           <div className=" btn text-sm text-gray-800 px-sm py-xs rounded-xl shadow-sm relative">
                   💬 GitHub
@@ -79,20 +70,11 @@ export default function HomePage() {
             </div> */}
           
           </div>
-          <div className="mb-md mt-xl z-40">
-          <Image src={'/assets/blob.gif'} width={300} height={600} alt="art"/>
-            <hr className='h-4 mb-md' />
+          <div className="mb-md mt-xl z-40 flex-col w-full flex items-center justify-center">
               <div className='flex flex-row flex-wrap z-50'>
-              <MarkdownViewer title='TransientState' />
-              <Image src={"/assets/DeWiChart.png"}              
-                  width={1024}
-                  height={768}
-                  alt="DeWi Market Chart"
-                  style={{ objectFit: 'scale-down' }}
-                  />
-                <MarkdownViewer title='DeWiMarket' />
-                <Link href={`articles/DeWiMarket`} className="text-lg text-primary"><h2>Decentralized Wireless Network Markets on Solana</h2></Link>
-                <hr className='h-2 mt-xl w-full'/>
+              <hr className='h-8 w-full mb-xl z-50' />
+
+              {/* <IframeLibrary /> */}
                 <HeliusBlogs />
                 <hr className='h-2 mt-xl w-full'/>
                 <Image src={"/assets/AICompanion.webp"}              
@@ -117,6 +99,7 @@ export default function HomePage() {
                 loading="lazy"
                 style={{ borderRadius: '12px', position: "fixed", bottom: 0, right: 0, width: "28vw" }}
               ></iframe>
+            
 
         </div>
       </main>
