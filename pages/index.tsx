@@ -3,6 +3,7 @@
 import HeliusBlogs from '@/components/HeliusBlogs';
 import IframeLibrary from '@/components/Iframes';
 import MarkdownViewer from '@/components/MarkdownViewer';
+import TabBars from '@/components/Tabs';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -39,6 +40,7 @@ export default function HomePage() {
 
       <main className="container z-auto">
         {/* Hero Section */}
+        <TabBars />
       <section className="section z-40">
         <div className="w-full flex-between gap-32 z-40">
         <div className='flex-vertical h-full w-1/4 z-40 gap-2 mt-xl justify-center border-l-2'>
