@@ -18,13 +18,13 @@ export default function Home() {
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-xl text-center justify-center">
         <br />
-        <span className={title({ color: "violet" })}>Amy Qin&nbsp;</span>
+        <span className={title({ color: "violet" })}>Amy&nbsp;</span>
 
         <span className={title()}>
-          @0xSolanaGirl
+          SOLANAGIRL
         </span>
         <div className={subtitle({ class: "mt-4" })}>
-          Hardworking. Compassionate. Beautiful.
+          Currently Streaming.
         </div>
       </div>
       <Gallery />
