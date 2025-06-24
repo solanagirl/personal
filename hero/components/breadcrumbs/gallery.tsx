@@ -10,8 +10,9 @@ export default function Gallery() {
           <h4 className="text-white font-medium text-large">AMY SOLANAGIRL</h4>
         </CardHeader>
         <video controls autoPlay={true} loop={true} >
-            <source src="./photos/IMG_2649.MP4" type="video/mp4"/>
-            Your browser does not support the video tag.
+          <track />
+          <source src="./photos/IMG_2649.MP4" type="video/mp4"/>
+          Your browser does not support the video tag.
         </video>
       </Card>
       <Card className="col-span-12 sm:col-span-4 h-[300px]">
@@ -54,6 +55,7 @@ export default function Gallery() {
           <h4 className="text-white/90 font-medium text-xl">November 2022</h4>
         </CardHeader>
         <video controls  autoPlay={true} >
+        <track />
             <source src="./photos/v_breakpoint.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>

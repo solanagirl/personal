@@ -53,11 +53,11 @@ export default defineConfig([globalIgnores([
 
     plugins: {
         react: fixupPluginRules(react),
-        "unused-imports": unusedImports,
+        unused_imports: unusedImports,
         import: fixupPluginRules(_import),
         "@typescript-eslint": typescriptEslint,
         "jsx-a11y": fixupPluginRules(jsxA11Y),
-        prettier: fixupPluginRules(prettier),
+        "prettier": fixupPluginRules(prettier),
     },
 
     languageOptions: {
