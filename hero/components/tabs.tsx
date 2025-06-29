@@ -12,6 +12,7 @@ import { button as buttonStyles } from "@heroui/theme";
 
 import { siteConfig } from "@/config/site";
 import { GithubIcon } from "./icons";
+import HeliusBlogs from "./custom-components/HeliusBlogs 2";
 export default function TabBar() {
   return (
     <div className="flex w-1/2 flex-col my-4">
@@ -53,12 +54,6 @@ export default function TabBar() {
         <Tab key="Contributions" title="Contributions">
 
           <div className="flex gap-4 flex-wrap">
-      <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            App Publisher <Code color="primary">Solana Mobile</Code>
-          </span>
-        </Snippet>
-        <ChonkyCard />
         <div className="flex gap-3">
         <Link
           isExternal
@@ -82,25 +77,15 @@ export default function TabBar() {
       </div>
 
       </div>
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Developer Experience <Code color="primary">Helius</Code>
-          </span>
-        </Snippet>
-      </div>
-
-
-      <HeliusMobilePublishCard />
 
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="bordered">
           <span>
-            Fullstack Developer <Code color="primary">app/page.tsx</Code>
+            Developer Experience Engineer <Code color="primary">Helius.dev</Code>
           </span>
         </Snippet>
       </div>
-
+          <HeliusBlogs />
         </Tab>
       </Tabs>
     </div>

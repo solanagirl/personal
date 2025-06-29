@@ -1,0 +1,108 @@
+export const mockProducts = [
+  {
+    id: 1,
+    name: "Elderwood Wand Collection",
+    description:
+      "Crafted from ancient elderwood, these wands channel pure magical energy. Each wand chooses its wielder based on their inner magical resonance and intended purpose.",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 4.9,
+    category: "wands",
+    variants: [
+      {
+        id: 101,
+        name: "Phoenix Feather Core",
+        description: "Rare phoenix feather core provides exceptional power for transformation magic",
+        price: 299,
+        originalPrice: 349,
+        attributes: ["Transformation", "Healing", "Fire Magic"],
+        stock: 3,
+      },
+      {
+        id: 102,
+        name: "Dragon Heartstring Core",
+        description: "Dragon heartstring offers unmatched strength for combat and protection spells",
+        price: 399,
+        attributes: ["Protection", "Combat", "Strength"],
+        stock: 2,
+      },
+      {
+        id: 103,
+        name: "Unicorn Hair Core",
+        description: "Gentle unicorn hair core perfect for healing and light magic practitioners",
+        price: 249,
+        attributes: ["Healing", "Light Magic", "Purification"],
+        stock: 5,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Mystical Potion Collection",
+    description:
+      "Carefully brewed potions using rare ingredients from the mystical realms. Each potion is crafted to enhance specific magical abilities and provide unique benefits.",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 4.7,
+    category: "potions",
+    variants: [
+      {
+        id: 201,
+        name: "Elixir of Enhanced Focus",
+        description: "Sharpens mental clarity and magical concentration for 6 hours",
+        price: 89,
+        attributes: ["Focus", "Mental Clarity", "6hr Duration"],
+        stock: 12,
+      },
+      {
+        id: 202,
+        name: "Potion of Mystical Strength",
+        description: "Temporarily increases magical power and spell effectiveness",
+        price: 129,
+        attributes: ["Power Boost", "Spell Enhancement", "4hr Duration"],
+        stock: 8,
+      },
+      {
+        id: 203,
+        name: "Healing Draught Supreme",
+        description: "Rapidly restores magical energy and heals minor mystical ailments",
+        price: 69,
+        attributes: ["Healing", "Energy Restore", "Instant Effect"],
+        stock: 15,
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Enchanted Crystal Orbs",
+    description:
+      "These mystical crystals have been charged with ancient magic and serve as powerful focusing tools for divination, meditation, and spell amplification.",
+    image: "/placeholder.svg?height=300&width=400",
+    rating: 4.8,
+    category: "crystals",
+    variants: [
+      {
+        id: 301,
+        name: "Amethyst Divination Orb",
+        description: "Perfect for scrying and future sight, enhances psychic abilities",
+        price: 199,
+        attributes: ["Divination", "Psychic Enhancement", "Scrying"],
+        stock: 6,
+      },
+      {
+        id: 302,
+        name: "Quartz Amplification Crystal",
+        description: "Amplifies all magical energies and spell casting abilities",
+        price: 159,
+        attributes: ["Amplification", "Energy Focus", "Spell Boost"],
+        stock: 9,
+      },
+      {
+        id: 303,
+        name: "Obsidian Protection Stone",
+        description: "Provides powerful protection against dark magic and negative energies",
+        price: 179,
+        attributes: ["Protection", "Dark Magic Defense", "Energy Shield"],
+        stock: 4,
+      },
+    ],
+  },
+]

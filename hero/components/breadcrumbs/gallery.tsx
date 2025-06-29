@@ -3,13 +3,14 @@ import {Card, CardHeader, CardFooter, Image, Button} from "@heroui/react";
 
 export default function Gallery() {
   return (
-    <div className="max-w-[900px] gap-2 grid grid-cols-12 grid-rows-2 px-8">
+    <div className="max-w-[720px] gap-2 grid grid-cols-12 grid-rows-2">
       <Card className="col-span-12 sm:col-span-4 h-[300px]">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white/60 uppercase font-bold">What to watch</p>
           <h4 className="text-white font-medium text-large">AMY SOLANAGIRL</h4>
         </CardHeader>
-        <video controls autoPlay={true} loop={true} >
+        <video controls autoPlay={true} loop={true} muted={true}           className="z-0 w-full h-full object-cover"
+        >
           <track />
           <source src="./photos/IMG_2649.MP4" type="video/mp4"/>
           Your browser does not support the video tag.
@@ -54,7 +55,7 @@ export default function Gallery() {
           <p className="text-tiny text-white/60 uppercase font-bold">Moments</p>
           <h4 className="text-white/90 font-medium text-xl">November 2022</h4>
         </CardHeader>
-        <video controls  autoPlay={true} >
+        <video controls  autoPlay={true} muted={true} >
         <track />
             <source src="./photos/v_breakpoint.mp4" type="video/mp4" />
             Your browser does not support the video tag.
