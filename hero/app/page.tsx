@@ -10,7 +10,6 @@ import { ChonkyCard, HeliusMobilePublishCard } from "@/components/cards";
 import SchoolProgressBar from "@/components/progress";
 import { BreadcrumbTerms } from "@/components/breadcrumbs/courses";
 import {CourseAccordion, UpcomingCourseAccordion} from "@/components/breadcrumbs/course-accordion";
-import TabBar from "@/components/tabs";
 import Gallery from "@/components/breadcrumbs/gallery";
 import { Chat } from "@/components/ai-components/chat";
 import HeliusBlogs from "@/components/custom-components/HeliusBlogs 2";
