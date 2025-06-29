@@ -12,14 +12,16 @@ import { BreadcrumbTerms } from "@/components/breadcrumbs/courses";
 import {CourseAccordion, UpcomingCourseAccordion} from "@/components/breadcrumbs/course-accordion";
 import TabBar from "@/components/tabs";
 import Gallery from "@/components/breadcrumbs/gallery";
+import { Chat } from "@/components/ai-components/chat";
+import HeliusBlogs from "@/components/custom-components/HeliusBlogs 2";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
+    <section className="flex flex-col  max-w-screen items-center justify-center gap-20 py-8 md:py-10">
+      <div className="inline-block  text-center justify-center z-30 overflow-hidden">
+         
         <br />
         <span className={title({ color: "violet" })}>Amy&nbsp;</span>
-
         <span className={title()}>
           SOLANAGIRL
         </span>
@@ -27,8 +29,16 @@ export default function Home() {
           Currently Streaming.
         </div>
       </div>
+
+      <div className="w-full flex flex-row justify-center gap-2 sm:flex-wrap md:flex-nowrap">
+      <Chat />
       <Gallery />
-  <TabBar />
+      </div>
+        <div className="w-full flex z-50">
+            <iframe src="https://askorb.xyz" width={900} height={600} />
+            <Chat />
+        </div>     
+        <HeliusBlogs />
     </section>
   );
 }
